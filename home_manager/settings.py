@@ -32,12 +32,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # default
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # added
+    'rest_framework',
+    'devices_network',
 ]
 
 MIDDLEWARE = [
@@ -75,12 +79,12 @@ WSGI_APPLICATION = 'home_manager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+try:
+    from home_manager.local_settings import DATABASES
+except ModuleNotFoundError:
+    print("No configuration DATABASE in local_settings.py file!")
+    print("Declare it and try again!")
+    exit(0)
 
 
 # Password validation

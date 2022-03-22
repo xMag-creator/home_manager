@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from devices_network import views as devices
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('devices/', devices.DeviceListView.as_view()),
+    path('device/<str:name>/', devices.DeviceRetrieveUpdateView.as_view()),
 ]
