@@ -17,3 +17,6 @@ class DeviceRetrieveUpdateView(generics.RetrieveUpdateAPIView):
         device = generics.get_object_or_404(Device, name=name)
         print(device)
         return device
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
