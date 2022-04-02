@@ -14,7 +14,4 @@ class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Device
         fields = ['name', 'description', 'status', 'sensors']
-
-    # def create(self, validated_data):
-    #     sensors_data = validated_data.pop('sensor')
-
+        read_only_fields = ('name', )
