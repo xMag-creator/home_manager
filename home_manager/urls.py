@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('devices/', devices.DeviceListView.as_view()),
     path('device/<str:name>/', devices.DeviceRetrieveUpdateView.as_view()),
-    path('device/<str:device>/<str:sensor>/', devices.SensorRetrieveUpdateView.as_view()),
+    path('device/<str:device>/sensor/<str:sensor>/', devices.SensorRetrieveUpdateView.as_view()),
+    path('device/<str:device>/actuator/<str:actuator>/', devices.ActuatorRetrieveUpdateView.as_view()),
 ]
